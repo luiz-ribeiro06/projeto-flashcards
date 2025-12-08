@@ -1,0 +1,82 @@
+<%- include('./partials/header') %>
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adicionar Questão</title>
+  <link rel="stylesheet" type="text/css" href="../form_questao.css" />
+</head>
+<body>
+
+<div class="container-fluid py-3 px-5">
+  <h1>Adicionar questão</h1>
+  <form class="row g-3">
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Enunciado</label>
+    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Ex: Quanto é 2+2?" aria-describedby="validationServer03Feedback" required>
+    <div id="validationServer03Feedback" class="invalid-feedback">
+      Por favor insira um enunciado.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+   <label for="validationServer04" class="form-label">Disciplina</label>
+    <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+      <option selected disabled value=""></option>
+      <option>Matématica</option>
+      <option>Português</option>
+      <option>Ciências</option>
+    </select>
+    <div id="validationServer04Feedback" class="invalid-feedback">
+      Por favor escolha uma disciplina.
+    </div>
+  </div>
+
+<div class="input-group">
+   <label for="input-group" class="input-group pb-2">Alternativas</label>
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+</div>
+
+<div class="input-group">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+</div>
+ 
+
+
+
+<% /* <botão adicionar item> */ %>
+<div class="p-0">
+   <button class="btn btn-light rounded-circle align-items-center" type="button "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+  <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+</svg></button>
+  </div>
+<% /* </botão adicionar item> */ %>
+
+  <div class="mb-3">
+    <input type="file" class="form-control" aria-label="file example" required>
+    <div class="invalid-feedback">Example invalid form file feedback</div>
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-danger" type="submit" disabled>Enviar questão</button>
+  </div>
+</form>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  <footer>
+    <%- include('./partials/footer') %>
+  </footer>
+
+  </body>
+</html>
