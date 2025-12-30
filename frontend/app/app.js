@@ -13,6 +13,8 @@ app.use((req, res, next) => {
     console.log(`Acesso à rota: ${req.path}`);
     next();
 });
+
+const addflashcardRouter = require("./routes/addflashcard");
 const aboutRouter = require("./routes/about");
 const userRouter = require("./routes/user");
 const homeRouter = require("./routes/home");
@@ -35,6 +37,7 @@ app.use("/flashcard", flashcardRouter);
 app.use("/community", communityRouter);
 app.use("/user", userRouter);
 app.use("/about", aboutRouter);
+app.use("/addflashcard", addflashcardRouter);
 
 app.get('/user', function(req, res){
   res.render('user');
@@ -74,6 +77,10 @@ app.get('/flashcard', function(req, res){
 
 app.get('/about', function(req, res){
   res.render('about');
+});
+
+app.get('/addflashcard', function(req, res){
+  res.render('addflashcard');
 });
 
 app.use((req, res, next) => {
