@@ -1,0 +1,54 @@
+<%- include('./partials/header') %>
+  <div class = container>
+<div class="justify-content-md-end m-5">
+
+<% /* <barra de pesquisa> */ %>
+<div class="input-group">
+   <span class="input-group-text">
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="secondary" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg>
+  </span>
+  <input type="search" class="form-control" placeholder="Pesquisar..." aria-label="Search" aria-describedby="search-addon" />
+</div>
+<% /* </barra de pesquisa> */ %>
+
+<% /* <Disciplinas> */ %>
+<div class="container-fluid p-5">
+      <h4>Disciplinas</h4>
+      <div class="row justify-content-md-center">
+        <div class="col-md-6">
+          <a class="btn btn-danger m-3" href="/about" role="button">Matemática</a>
+          <a class="btn btn-warning" href="/about" role="button">Fisíca</a>
+          <a class="btn btn-info m-3" href="/about" role="button">História</a>
+          <a class="btn btn-success" href="/about" role="button">Biologia</a>
+         </div>
+         </div>
+         <% /* </Disciplinas> */ %>
+
+         <% /* <Preparatórios> */ %>
+         <h4>Preparatórios</h4>
+         <div class="row mt-4">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <h5 class="card-header bg-success">OBMEP</h5>
+      <div class="card-body">
+        <p class="card-text">Compilado de questões da OBMEP separadas por fase e nível de dificuldade.</p>
+        <a href="#" class="btn btn-primary">Resolver</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <h5 class="card-header bg-info">ENEM</h5>
+      <div class="card-body">
+        <p class="card-text">Compilados de questões do ENEM separados por ano e disciplina.</p>
+        <a href="#" class="btn btn-primary">Resolver</a>
+      </div>
+    </div>
+  </div>
+  </div>
+         </div>
+<% /* </Preparatórios> */ %>
+
+<%- include('./partials/footer') %>
