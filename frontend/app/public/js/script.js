@@ -1,3 +1,6 @@
+const API_URL = "/api/question"
+const questionsContainer = document.getElementById('questionsContainer')
+
 document.addEventListener('DOMContentLoaded', () => {
     const btnAdd = document.getElementById('btnAdicionarAlternativa');
     const container = document.getElementById('alternativas-container');
@@ -71,3 +74,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// carregar as questões
+
+async function loadQuestions() {
+    questionsContainer.innerHTML = "<p>Carregando questões...</p>";
+
+    try {
+        const res = await fetch(API_URL);
+        const questions = await res.json();
+
+        questionsContainer.innerHTML = "";
+
+        questions.forEach((q) => {
+            const card = document.createElement('div');
+            card.className = "card";
+            card.innerHTML = `
+                <h3>Matéria: ${q.discipline}</h3>
+                <button onclick="goToAnswer('${q._id}')">Responder</button>
+                <button onclick="deleteQuestion('${q._id}')">Excluir</button>
+            `;
+            questionsContainer.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error(err);
+        questionsContainer.innerHTML = "<p>Erro ao carregar questões</p>";
+    }
+    
+}
+
+async function deleteQuestion(id) {
+   if(!confirm("Deseja excluir?")) return ;
+   try {
+    await fetch(`${API_URL}/${id}`, {method: "DELETE"})
+    loadQuestions();
+   } catch (error) {
+    alert('Erro ao excluir questão!')
+   }
+
+}
+
+function goToAnswer(id) {
+  window.location.href = `/answer/${id}`;
+}
+
+
+loadQuestions();

@@ -19,7 +19,6 @@ const aboutRouter = require("./routes/about");
 const userRouter = require("./routes/user");
 const homeRouter = require("./routes/home");
 const addRouter = require("./routes/add");
-const questionRouter = require("./routes/question");
 const folderRouter  = require("./routes/folder");
 const { error } = require("console");
 const answerRouter = require("./routes/answer");
@@ -29,7 +28,6 @@ const communityRouter = require("./routes/community");
 
 app.use("/", homeRouter);
 app.use("/add", addRouter);
-app.use("/question", questionRouter);
 app.use("/folder", folderRouter);
 app.use("/answer", answerRouter);
 app.use("/list", listRouter);
@@ -51,17 +49,11 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
-app.get('/question', function(req, res){
-  res.render('question');
-});
-
 app.get('/folder', function(req, res){
   res.render('folder');
 });
 
-app.get('/answer', function(req, res){
-  res.render('answer');
-});
+
 
 app.get('/community', function(req, res){
   res.render('community');
