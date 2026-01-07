@@ -15,12 +15,13 @@
     <div class="container-fluid py-3 px-5">
       <h1>Adicionar questão</h1>
 
-      <form class="row g-3">
+      <form class="row g-3" id="formQuestao">
         <div class="col-md-4">
           <label class="form-label">Enunciado</label>
           <input
             type="text"
             class="form-control"
+            id="enunciado"
             placeholder="Ex: Quanto é 2+2?"
             required
           />
@@ -28,11 +29,11 @@
 
         <div class="col-md-4">
           <label class="form-label">Disciplina</label>
-          <select class="form-select" required>
+          <select class="form-select" id="disciplina" required>
             <option selected disabled value="">Selecione</option>
-            <option>Matemática</option>
-            <option>Português</option>
-            <option>Ciências</option>
+            <option value="Matemática">Matemática</option>
+            <option value="Português">Português</option>
+            <option value="Ciências">Ciências</option>
           </select>
         </div>
 
@@ -46,12 +47,14 @@
                   class="form-check-input mt-0"
                   type="radio"
                   name="correta"
+                  required
                 />
               </div>
               <textarea
                 class="form-control"
                 rows="1"
                 placeholder="Digite a alternativa"
+                required
               ></textarea>
             </div>
 
@@ -67,6 +70,7 @@
                 class="form-control"
                 rows="1"
                 placeholder="Digite a alternativa"
+                required
               ></textarea>
             </div>
           </div>
@@ -92,17 +96,12 @@
         </div>
 
         <div class="mb-3 col-12">
-          <input type="file" class="form-control" />
-        </div>
-
-        <div class="mb-3 col-12">
           <button class="btn btn-danger" type="submit">Enviar questão</button>
         </div>
       </form>
     </div>
 
-    <script src="/stylesheets/script.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
-
 <%- include('./partials/footer') %>
