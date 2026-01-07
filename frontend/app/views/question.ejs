@@ -12,11 +12,89 @@
         <span class="visually-hidden">Carregando...</span>
       </div>
     </div>
-  </main>
+  </div>
+</div>
 
-  <footer>
-    <%- include('./partials/footer') %>
-  </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const container = document.getElementById("questions-container");
 
-  </body>
-</html>
+    try {
+      const response = await fetch("/api/question");
+      const questions = await response.json();
+
+      container.innerHTML = "";
+
+      if (questions.length === 0) {
+        container.innerHTML = "<p class='text-muted'>Nenhuma questão encontrada.</p>";
+        return;
+      }
+
+      questions.forEach((q) => {
+        let alternativesHtml = "";
+        q.alternative.forEach((alt) => {
+          const style = alt.correct
+            ? "background-color: #d1e7dd; border-color: #badbcc;" // Verde se correta
+            : "background-color: #f8f9fa;"; // Cinza se errada
+
+          alternativesHtml += `
+            <li class="list-group-item" style="${style}">
+              ${alt.text} ${alt.correct ? '✅' : ''}
+            </li>
+          `;
+        });
+
+        // Cria o Card
+        const cardHtml = `
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                <span class="badge bg-danger">${q.discipline}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">${q.statement}</h5>
+                <ul class="list-group list-group-flush mt-3">
+                  ${alternativesHtml}
+                </ul>
+              </div>
+              <div class="card-footer bg-white border-top-0 d-flex justify-content-end gap-2">
+                <button class="btn btn-sm btn-outline-primary" onclick="editarQuestao('${q._id}')">Editar</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="deletarQuestao('${q._id}')">Excluir</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.innerHTML += cardHtml;
+      });
+
+    } catch (error) {
+      console.error("Erro:", error);
+      container.innerHTML = "<div class='alert alert-danger'>Erro ao carregar questões.</div>";
+    }
+  });
+
+  // Deletar
+  async function deletarQuestao(id) {
+    if (confirm("Tem certeza que deseja apagar esta questão?")) {
+      try {
+        const res = await fetch(`/api/question/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          alert("Removido!");
+          location.reload();
+        } else {
+          alert("Erro ao remover.");
+        }
+      } catch (err) {
+        alert("Erro de conexão.");
+      }
+    }
+  }
+
+  // Função pra editar (to do)
+  function editarQuestao(id) {
+    alert("Não implementado ainda...");
+  }
+</script>
+
+<%- include('./partials/footer') %>
