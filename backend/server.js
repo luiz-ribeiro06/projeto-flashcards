@@ -31,6 +31,9 @@ app.get('/add', (req, res) => res.render('add'));
 app.get('/question', (req, res) => res.render('question'));
 app.get('/folder', (req, res) => res.render('folder'));
 app.get('/answer', (req, res) => res.render('answer'));
+app.get('/answer/:id', (req, res) => {
+    res.render('answer'); 
+});
 app.get('/list', (req, res) => res.render('list'));
 app.get('/flashcard', (req, res) => res.render('flashcard'));
 app.get('/community', (req, res) => res.render('community'));
@@ -39,6 +42,14 @@ app.get('/about', (req, res) => res.render('about'));
 app.get('/addflashcard', (req, res) => res.render('addflashcard'));
 
 // Tratamento de Erros
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+    console.log(`Tentando acessar: ${req.method} ${req.url}`);
+    next();
+});
+
 app.use((req, res, next) => {
     const err = new Error('Página não encontrada');
     err.status = 404;
