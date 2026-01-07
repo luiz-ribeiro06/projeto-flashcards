@@ -1,14 +1,12 @@
 <%- include('./partials/header') %>
-  <main>
-    <div class="ui segment">
-      <h1>Answer Route</h1>
-      <p>This is an Answer route</p>
-    </div>
-  </main>
 
-  <footer>
-    <%- include('./partials/footer') %>
-  </footer>
+<main>
+  <h2 id="statement"></h2>
 
-  </body>
-</html>
+  <form id="answerForm">
+    <div id="alternatives"></div>
+    <button type="submit">Responder</button>
+  </form>
+</main>
+
+<script src="/js/question-answer.js"></script>
